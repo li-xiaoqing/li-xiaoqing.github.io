@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="小清">
 <meta property="og:description" content="hexo可以非常方便的渲染markdown语法，生成并且部署我们的文档；甚至默认集成了一款主题让我使用(再也不担心网站不好看了=——=)。但是不满足的我当然要选择一款适合我的hexo主题，并且还要个性化定制一番。看了这篇文章，大家肯定都会定制自己的博客主题了。 热门主题hexo有非常多的主题，基本上我们不用从0开始造一个主题出来，直接fork到themes文件夹下，改造一下即可，对themes文件">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-13T14:35:37.264Z">
+<meta property="og:updated_time" content="2019-03-20T00:33:19.043Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo主题配置">
 <meta name="twitter:description" content="hexo可以非常方便的渲染markdown语法，生成并且部署我们的文档；甚至默认集成了一款主题让我使用(再也不担心网站不好看了=——=)。但是不满足的我当然要选择一款适合我的hexo主题，并且还要个性化定制一番。看了这篇文章，大家肯定都会定制自己的博客主题了。 热门主题hexo有非常多的主题，基本上我们不用从0开始造一个主题出来，直接fork到themes文件夹下，改造一下即可，对themes文件">
@@ -384,45 +384,137 @@
       
         <p>hexo可以非常方便的渲染markdown语法，生成并且部署我们的文档；甚至默认集成了一款主题让我使用(再也不担心网站不好看了=——=)。但是不满足的我当然要选择一款适合我的hexo主题，并且还要个性化定制一番。看了这篇文章，大家肯定都会定制自己的博客主题了。</p>
 <h2 id="热门主题"><a href="#热门主题" class="headerlink" title="热门主题"></a>热门主题</h2><p>hexo有非常多的<a href="https://hexo.io/themes/" target="_blank" rel="noopener">主题</a>，基本上我们不用从0开始造一个主题出来，直接fork到themes文件夹下，改造一下即可，对themes文件夹不太熟悉的同学可以看我<a href="/2019/02/28/hexo-入门/">上一遍</a>。我比较钟爱<a href="https://github.com/theme-next/hexo-theme-next" target="_blank" rel="noopener">NexT</a>主题，简单大方。执行以下命令即可完成NexT主题的下载<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd your-hexo-site</span><br><span class="line">$ git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure></p>
-<h2 id="定制功能"><a href="#定制功能" class="headerlink" title="定制功能"></a>定制功能</h2><blockquote>
-<p>语言</p>
+<h2 id="定制功能"><a href="#定制功能" class="headerlink" title="定制功能"></a>定制功能</h2><p>以下定制功能的配置都是基于<strong>next5.1.4</strong>，不同版本的next主题配置可能有所区别，具体以next主题和github仓库和文档为准</p>
+<blockquote>
+<p>博客标题、作者、语言、主题和部署git repo等基础信息</p>
 </blockquote>
+<p>打开根目录_config.yml博客配置文件(以下统称根配置)，分别修改以下配置项：</p>
+<ul>
+<li>title: 小清</li>
+<li>author: 小清</li>
+<li>language: zh-Hans (themes/next/languages/ 下边有对应的语言yml文件)</li>
+<li>theme: next</li>
+<li>deploy:<ul>
+<li>type: git</li>
+<li>repository:</li>
+<li>branch: master</li>
+</ul>
+</li>
+</ul>
 <blockquote>
 <p>首页显示文章摘要</p>
 </blockquote>
+<p>打开使用的主题next文件夹目录下的_config.yml主题配置文件(以下统称主题配置)，打开以下配置即可，另外可以通过 &lt;!–more–&gt;来控制首页显示的内容的结尾。</p>
+<ul>
+<li>auto_excerpt: true</li>
+</ul>
 <blockquote>
-<p>fork me github</p>
+<p>fork me on github</p>
 </blockquote>
+<p>先在<a href="https://github.com/blog/273-github-ribbons" target="_blank" rel="noopener">这里</a>或者<a href="http://tholman.com/github-corners/" target="_blank" rel="noopener">这里</a>选择一款自己喜欢的样式，复制一下，<br>然后打开themes/next/layout/_layout.swig文件中，粘贴在\<div class="headband"></div>的下面，并把href改为你的github地址，大功告成。</p>
 <blockquote>
 <p>添加动态背景</p>
 </blockquote>
+<p>同样next自带了几款不同类型的动态效果，主题配置找到canvas_nest节点，配置你喜欢的效果即可</p>
+<ul>
+<li>canvas_nest:</li>
+<li>three_waves:</li>
+</ul>
 <blockquote>
-<p>点击爱心</p>
+<p>点击效果</p>
 </blockquote>
+<p>目前我见到的就两种，上浮桃心，显示文字。效果都不错的，使用的人还是很多的。需要先在在/themes/next/source/js/src下新建文件clicklove.js，接着把<a href="https://www.lihuiqing.com/js/src/clicklove.js" target="_blank" rel="noopener">该链接</a>下的代码拷贝粘贴到clicklove.js文件中。其中代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function(e,t,a)&#123;function n()&#123;c(&quot;.heart&#123;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);&#125;.heart:after,.heart:before&#123;content: &apos;&apos;;width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;&#125;.heart:after&#123;top: -5px;&#125;.heart:before&#123;left: -5px;&#125;&quot;),o(),r()&#125;function r()&#123;for(var e=0;e&lt;d.length;e++)d[e].alpha&lt;=0?(t.body.removeChild(d[e].el),d.splice(e,1)):(d[e].y--,d[e].scale+=.004,d[e].alpha-=.013,d[e].el.style.cssText=&quot;left:&quot;+d[e].x+&quot;px;top:&quot;+d[e].y+&quot;px;opacity:&quot;+d[e].alpha+&quot;;transform:scale(&quot;+d[e].scale+&quot;,&quot;+d[e].scale+&quot;) rotate(45deg);background:&quot;+d[e].color+&quot;;z-index:99999&quot;);requestAnimationFrame(r)&#125;function o()&#123;var t=&quot;function&quot;==typeof e.onclick&amp;&amp;e.onclick;e.onclick=function(e)&#123;t&amp;&amp;t(),i(e)&#125;&#125;function i(e)&#123;var a=t.createElement(&quot;div&quot;);a.className=&quot;heart&quot;,d.push(&#123;el:a,x:e.clientX-5,y:e.clientY-5,scale:1,alpha:1,color:s()&#125;),t.body.appendChild(a)&#125;function c(e)&#123;var a=t.createElement(&quot;style&quot;);a.type=&quot;text/css&quot;;try&#123;a.appendChild(t.createTextNode(e))&#125;catch(t)&#123;a.styleSheet.cssText=e&#125;t.getElementsByTagName(&quot;head&quot;)[0].appendChild(a)&#125;function s()&#123;return&quot;rgb(&quot;+~~(255*Math.random())+&quot;,&quot;+~~(255*Math.random())+&quot;,&quot;+~~(255*Math.random())+&quot;)&quot;&#125;var d=[];e.requestAnimationFrame=function()&#123;return e.requestAnimationFrame||e.webkitRequestAnimationFrame||e.mozRequestAnimationFrame||e.oRequestAnimationFrame||e.msRequestAnimationFrame||function(e)&#123;setTimeout(e,1e3/60)&#125;&#125;(),n()&#125;(window,document);</span><br></pre></td></tr></table></figure></p>
+<p>在/themes/next/ayout/layout.swig文件末尾添加：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 页面点击小红心 --&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;/js/src/clicklove.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>侧边栏和个人社交信息</p>
 </blockquote>
+<p>侧边栏可以控制左侧或者右侧显示、条件显示隐藏，具体配置项含义见主题配置：</p>
+<ul>
+<li>siderbar:<ul>
+<li>position:</li>
+<li>display:</li>
+</ul>
+</li>
+</ul>
+<p>主题配置中的社交信息:</p>
+<ul>
+<li>social<ul>
+<li>GitHub:</li>
+<li>E-Mail:</li>
+</ul>
+</li>
+<li>social_icons:<ul>
+<li>enable: true</li>
+</ul>
+</li>
+</ul>
 <blockquote>
 <p>文章访问量</p>
 </blockquote>
+<p>直接使用主题集成的不蒜子，主题配置，它的缺点是统计不准确。需要准确的统计，请使用LeanCloud统计。</p>
+<ul>
+<li>busuanzi_count<ul>
+<li>enable: true</li>
+<li>site_uv: true</li>
+<li>site_pv: true</li>
+</ul>
+</li>
+</ul>
 <blockquote>
-<p>热度</p>
+<p>本文结束<br>在/themes/next/layout/_macro中新建passage-end-tag.swig文件，并填写以下内容：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    &#123;% if not is_index %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"text-align:center;color: #ccc;font-size:14px;"</span>&gt;</span>-------------本文结束<span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fa fa-paw"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span>感谢您的阅读-------------<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    &#123;% endif %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 </blockquote>
-<blockquote>
-<p>本文结束</p>
-</blockquote>
+<p>修改/themes/next/layout/_macro/post.swig文件，在post-body后，post-footer前，添加下面内容：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">  &#123;% if not is_index %&#125;</span><br><span class="line">    &#123;% include 'passage-end-tag.swig' %&#125;</span><br><span class="line">  &#123;% endif %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>修改主题配置文件：</p>
+<ul>
+<li>passage_end_tag:<ul>
+<li>enabled: true</li>
+</ul>
+</li>
+</ul>
 <blockquote>
 <p>隐藏底部信息</p>
 </blockquote>
+<p>在主题配置中设置footer</p>
+<ul>
+<li>footer:<ul>
+<li>powered: false</li>
+</ul>
+</li>
+</ul>
 <blockquote>
 <p>分享</p>
 </blockquote>
+<p>本博客采用百度分享的，分享的配置比较简单，也是主题配置文件</p>
+<ul>
+<li>baidushare:<ul>
+<li>type: slide<br>但是百度分享的sdk有个静态资源不支持https，我们直接把sdk的静态代码放到next主题中集成即可。<a href="https://github.com/hrwhisper/baiduShare" target="_blank" rel="noopener">sdk下载地址</a>，将static文件夹保存至/themes/next/source目录下，修改/themes/next\layout_partials/share/baidushare.swig，将<a href="http://bdimg.share.baidu.com/static/" target="_blank" rel="noopener">http://bdimg.share.baidu.com/static/</a> 改为 ./static</li>
+</ul>
+</li>
+</ul>
 <blockquote>
-<p>搜索</p>
+<p>搜索<br>next集成了两种搜索，本地搜索和Algolia搜索，具体配置见<a href="http://theme-next.iissnan.com/third-party-services.html#algolia-search" target="_blank" rel="noopener">官方文档</a>。需要注意的是，配置完app后，设置Algolia搜索ACL（访问控制列表）权限。其实</p>
+<ul>
+<li>创建app，获取正确的appid、appkey等，配置acl权限(我们就可以搜索创建索引，上传索引了)</li>
+<li>主题配置文件配置相关的参数</li>
+<li>本地设置全局变量，本地索引上传（该过程依赖安装npm i hexo-algolia –save,上传索引命令：hexo algolia）</li>
+<li>根配置url为/，控制返回结果的url前缀，默认是<a href="http://yoursite.com/" target="_blank" rel="noopener">http://yoursite.com/</a></li>
+</ul>
 </blockquote>
 <blockquote>
 <p>valine 评论</p>
 </blockquote>
+<p>next集成了多款评论插件：Duoshuo、Disqus、Hypercomments、changyan、Valine和Gitment，通过对比，本博客采用了Valine，原因有两个基本功能能用，允许匿名发布，没别墙。</p>
+<p>配置过程：</p>
+<ul>
+<li>注册<a href="https://leancloud.cn/" target="_blank" rel="noopener">Leancloud</a></li>
+<li>创建一个应用，获取到appid aapkey</li>
+<li>next配置文件valine:<ul>
+<li>enable: true</li>
+<li>appid:</li>
+<li>appkey:</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
@@ -435,7 +527,16 @@
     
 
     
+    <div>
+        
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">本文结束<i class="fa fa-paw"></i>感谢您的阅读</div>
+    
+</div>
 
+        
+    </div>
     <footer class="post-footer">
       
         <div class="post-tags">
@@ -462,6 +563,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/19/hexo-配置域名/" rel="prev" title="hexo-配置域名">
+                hexo-配置域名 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -570,7 +675,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
