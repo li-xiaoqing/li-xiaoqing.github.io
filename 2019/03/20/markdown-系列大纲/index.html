@@ -79,15 +79,18 @@
 
 
 
+<meta name="description" content="自己开发的perfect-markdown编辑器已经投入项目使用一个多月，实现了大部分编辑器该有的功能，中间也填了不少坑，目前基本可以稳定的支撑常见的业务需求。同学们如果有markdown编辑器的使用或者开发需求可以fork，并且欢迎star。 同时打算整理下编辑器的立项和开发整个过程，分享给大家。提纲大致如下，如果大家有任何，题或者感兴趣的点，评论区给我留言。 做的初衷markdown基础知识">
 <meta name="keywords" content="markdown">
 <meta property="og:type" content="article">
 <meta property="og:title" content="markdown编辑器-系列大纲">
 <meta property="og:url" content="/2019/03/20/markdown-系列大纲/index.html">
 <meta property="og:site_name" content="小清">
+<meta property="og:description" content="自己开发的perfect-markdown编辑器已经投入项目使用一个多月，实现了大部分编辑器该有的功能，中间也填了不少坑，目前基本可以稳定的支撑常见的业务需求。同学们如果有markdown编辑器的使用或者开发需求可以fork，并且欢迎star。 同时打算整理下编辑器的立项和开发整个过程，分享给大家。提纲大致如下，如果大家有任何，题或者感兴趣的点，评论区给我留言。 做的初衷markdown基础知识">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-20T01:29:49.184Z">
+<meta property="og:updated_time" content="2019-03-27T01:45:19.892Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="markdown编辑器-系列大纲">
+<meta name="twitter:description" content="自己开发的perfect-markdown编辑器已经投入项目使用一个多月，实现了大部分编辑器该有的功能，中间也填了不少坑，目前基本可以稳定的支撑常见的业务需求。同学们如果有markdown编辑器的使用或者开发需求可以fork，并且欢迎star。 同时打算整理下编辑器的立项和开发整个过程，分享给大家。提纲大致如下，如果大家有任何，题或者感兴趣的点，评论区给我留言。 做的初衷markdown基础知识">
 
 
 
@@ -401,7 +404,30 @@
       
 
       
-        
+        <p>自己开发的<a href="https://github.com/li-xiaoqing/perfect-markdown" target="_blank" rel="noopener">perfect-markdown编辑器</a>已经投入项目使用一个多月，实现了大部分编辑器该有的功能，中间也填了不少坑，目前基本可以稳定的支撑常见的业务需求。同学们如果有markdown编辑器的使用或者开发需求可以fork，并且欢迎star。</p>
+<p>同时打算整理下编辑器的立项和开发整个过程，分享给大家。提纲大致如下，如果大家有任何，题或者感兴趣的点，评论区给我留言。</p>
+<h1 id="做的初衷"><a href="#做的初衷" class="headerlink" title="做的初衷"></a>做的初衷</h1><h1 id="markdown基础知识"><a href="#markdown基础知识" class="headerlink" title="markdown基础知识"></a>markdown基础知识</h1><ul>
+<li>发展历史</li>
+<li>编辑器形态</li>
+</ul>
+<h1 id="markdown编辑器需求分析和功能设计"><a href="#markdown编辑器需求分析和功能设计" class="headerlink" title="markdown编辑器需求分析和功能设计"></a>markdown编辑器需求分析和功能设计</h1><ul>
+<li>需求</li>
+<li>总体设计</li>
+<li>功能设计</li>
+</ul>
+<h1 id="编辑器技术实现"><a href="#编辑器技术实现" class="headerlink" title="编辑器技术实现"></a>编辑器技术实现</h1><ul>
+<li>设计思路</li>
+<li>技术准备         </li>
+</ul>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<li>项目效果</li>
+<li>优点与劣势</li>
+</ul>
+<h1 id="后续计划"><a href="#后续计划" class="headerlink" title="后续计划"></a>后续计划</h1><ul>
+<li>重构</li>
+<li>推广</li>
+</ul>
+
       
     </div>
     
@@ -530,8 +556,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -603,6 +638,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#做的初衷"><span class="nav-number">1.</span> <span class="nav-text">做的初衷</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#markdown基础知识"><span class="nav-number">2.</span> <span class="nav-text">markdown基础知识</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#markdown编辑器需求分析和功能设计"><span class="nav-number">3.</span> <span class="nav-text">markdown编辑器需求分析和功能设计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编辑器技术实现"><span class="nav-number">4.</span> <span class="nav-text">编辑器技术实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后续计划"><span class="nav-number">6.</span> <span class="nav-text">后续计划</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
